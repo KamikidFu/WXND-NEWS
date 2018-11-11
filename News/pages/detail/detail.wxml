@@ -1,0 +1,22 @@
+<view class='container'>
+
+  <view class='news-title'>
+    {{title}}
+  </view>
+
+  <view class='news-details'>
+    <view class='news-src'>{{source}}</view>
+    <view class='news-time'>{{time}}</view>
+    <view class='news-count'>
+    <text wx:if="{{item.source.length!=0}}" decode="{{true}}">&nbsp;</text> 
+     阅读量:{{count}}
+    </view>
+  </view>
+
+  <view wx:for="{{content}}" wx:key="{{index}}">
+    <image class='news-image' wx:if="{{item.type == 'image'}}" src='{{item.src}}' mode='aspectFit'></image>
+    <view class='news-content' wx:if="{{item.type == 'p'}}">{{item.text}}</view>
+    <view class='news-strong' wx:if="{{item.type == 'strong'}}">{{item.text}}</view>
+  </view>
+
+</view>

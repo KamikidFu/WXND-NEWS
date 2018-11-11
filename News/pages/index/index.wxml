@@ -1,0 +1,51 @@
+<view class='container'>
+  <!-- type-tab -->
+  <view class='type-tab'>
+    <view class="type-item"  wx:for="{{tab_names}}" wx:key="{{index}}" wx:for-index="index">
+      <view class="type-name {{tab_names[index]}}" 
+        data-hi="{{item}}" data-key='{{index}}' bindtap="onTapTab">{{item}}</view>
+    </view>
+  </view>
+
+   <!-- hot-news -->
+  <view class='hot-news' bindtap='onTapNews' data-hi="{{hotNews.id}}">
+      <image wx:if="{{hotNews.firstImage.length != 0}}" 
+      class='hot-news-image' src='{{hotNews.firstImage}}' mode='aspectFill' ></image>
+      <view class='hot-news-detail'>
+        <view class='hot-news-title'>
+          {{hotNews.title}}
+        </view>
+        <view class='hot-news-source-time'>
+          {{hotNews.source}}    
+          {{hotNews.time}}      
+        </view>
+      </view>  
+  </view>
+
+  
+  <!-- news-list -->
+  <view class='news-list'>
+    <view class='news-item' bindtap='onTapNews' data-hi="{{item.id}}" wx:for="{{newsList}}" wx:key="{{index}}">
+
+      <view class='news-item-detail'>
+        <view class='news-item-title'>
+          {{item.title}}
+        </view>
+        <image wx:if="{{item.firstImage.length === 0}}" class='news-image' src='/images/news.png' mode='aspectFill' ></image>
+        <image class='news-item-image' src='{{item.firstImage}}' mode='aspectFill'></image>
+      </view>
+
+      <view class='news-item-srctime'>
+      <view wx:if="{{item.source.length===0}}" class='news-item-source'>无来源</view>
+        <view wx:if="{{item.source.length !== 0}}"class="news-item-source">
+          {{item.source}}
+        </view>
+        <view class='news-item-time'>
+          {{item.time}}
+        </view>
+      </view>  
+
+    </view>
+  </view>
+
+</view>
